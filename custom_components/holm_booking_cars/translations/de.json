@@ -1,0 +1,102 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HOLM Booking Cars",
+        "description": "Fahrzeuge, Personen und Benachrichtigungen werden danach über die HOLM Booking Cars Karte (Zahnrad) eingestellt. Personen aus Home Assistant werden automatisch übernommen.",
+        "data": {
+          "vehicle_name": "Name des ersten Fahrzeugs"
+        },
+        "data_description": {
+          "vehicle_name": "Weitere, mit Foto und Farbe, können über die Karte hinzugefügt werden."
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "HOLM Booking Cars ist bereits eingerichtet."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "statut": {
+        "name": "Status",
+        "state": {
+          "disponible": "Verfügbar",
+          "bientot": "Bald reserviert",
+          "reserve": "Reserviert"
+        }
+      },
+      "en_cours": {
+        "name": "Reserviert von"
+      },
+      "prochaine_reservation": {
+        "name": "Nächste Reservierung"
+      }
+    },
+    "binary_sensor": {
+      "disponible": {
+        "name": "Verfügbar"
+      }
+    }
+  },
+  "services": {
+    "book": {
+      "name": "Fahrzeug reservieren",
+      "description": "Erstellt eine Reservierung; abgelehnt, wenn sie sich mit einer anderen überschneidet.",
+      "fields": {
+        "vehicle": {
+          "name": "Fahrzeug",
+          "description": "Fahrzeug-ID (optional, wenn es nur eines gibt)."
+        },
+        "person": {
+          "name": "Person",
+          "description": "Personen-ID."
+        },
+        "start": {
+          "name": "Beginn",
+          "description": "Abfahrtsdatum und -zeit."
+        },
+        "end": {
+          "name": "Ende",
+          "description": "Rückgabedatum und -zeit."
+        },
+        "reason": {
+          "name": "Grund",
+          "description": "Wofür das Fahrzeug reserviert ist."
+        },
+        "destination": {
+          "name": "Ziel",
+          "description": "Wohin es geht."
+        },
+        "km": {
+          "name": "Geplante Kilometer",
+          "description": "Geschätzte Strecke."
+        },
+        "note": {
+          "name": "Notiz",
+          "description": "Freier Kommentar."
+        }
+      }
+    },
+    "cancel": {
+      "name": "Reservierung stornieren",
+      "description": "Löscht eine Reservierung anhand ihrer ID.",
+      "fields": {
+        "booking_id": {
+          "name": "Reservierung",
+          "description": "Reservierungs-ID."
+        }
+      }
+    },
+    "finish": {
+      "name": "Fahrzeug zurückgeben",
+      "description": "Beendet die laufende Reservierung jetzt (frühe Rückgabe).",
+      "fields": {
+        "vehicle": {
+          "name": "Fahrzeug",
+          "description": "Fahrzeug-ID (optional, wenn es nur eines gibt)."
+        }
+      }
+    }
+  }
+}

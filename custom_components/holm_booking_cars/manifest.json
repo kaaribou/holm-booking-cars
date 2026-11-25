@@ -1,0 +1,15 @@
+{
+  "domain": "holm_booking_cars",
+  "name": "HOLM Booking Cars",
+  "after_dependencies": ["frontend", "lovelace", "mobile_app", "person"],
+  "codeowners": ["@kaaribou"],
+  "config_flow": true,
+  "dependencies": ["http"],
+  "documentation": "https://github.com/kaaribou/holm-booking-cars",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/kaaribou/holm-booking-cars/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "1.0.0"
+}

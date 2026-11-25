@@ -1,0 +1,102 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HOLM Booking Cars",
+        "description": "Voertuigen, personen en meldingen stel je daarna in via de HOLM Booking Cars kaart (tandwiel). Personen uit Home Assistant worden automatisch overgenomen.",
+        "data": {
+          "vehicle_name": "Naam van het eerste voertuig"
+        },
+        "data_description": {
+          "vehicle_name": "Je kunt er meer toevoegen, met foto en kleur, via de kaart."
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "HOLM Booking Cars is al geïnstalleerd."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "statut": {
+        "name": "Status",
+        "state": {
+          "disponible": "Beschikbaar",
+          "bientot": "Binnenkort gereserveerd",
+          "reserve": "Gereserveerd"
+        }
+      },
+      "en_cours": {
+        "name": "Gereserveerd door"
+      },
+      "prochaine_reservation": {
+        "name": "Volgende reservering"
+      }
+    },
+    "binary_sensor": {
+      "disponible": {
+        "name": "Beschikbaar"
+      }
+    }
+  },
+  "services": {
+    "book": {
+      "name": "Voertuig reserveren",
+      "description": "Maakt een reservering; geweigerd als die overlapt met een andere reservering van het voertuig.",
+      "fields": {
+        "vehicle": {
+          "name": "Voertuig",
+          "description": "Voertuig-ID (optioneel als er maar één is)."
+        },
+        "person": {
+          "name": "Persoon",
+          "description": "Persoon-ID."
+        },
+        "start": {
+          "name": "Begin",
+          "description": "Vertrekdatum en -tijd."
+        },
+        "end": {
+          "name": "Einde",
+          "description": "Terugkeerdatum en -tijd."
+        },
+        "reason": {
+          "name": "Reden",
+          "description": "Waarvoor het voertuig gereserveerd is."
+        },
+        "destination": {
+          "name": "Bestemming",
+          "description": "Waar je heen gaat."
+        },
+        "km": {
+          "name": "Geplande kilometers",
+          "description": "Geschatte afstand."
+        },
+        "note": {
+          "name": "Notitie",
+          "description": "Vrije opmerking."
+        }
+      }
+    },
+    "cancel": {
+      "name": "Reservering annuleren",
+      "description": "Verwijdert een reservering via haar ID.",
+      "fields": {
+        "booking_id": {
+          "name": "Reservering",
+          "description": "Reserverings-ID."
+        }
+      }
+    },
+    "finish": {
+      "name": "Voertuig terugbrengen",
+      "description": "Beëindigt de lopende reservering nu (vroeg teruggebracht).",
+      "fields": {
+        "vehicle": {
+          "name": "Voertuig",
+          "description": "Voertuig-ID (optioneel als er maar één is)."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+book:
+  fields:
+    vehicle:
+      example: voiture
+      selector:
+        text:
+    person:
+      example: marie
+      selector:
+        text:
+    start:
+      required: true
+      selector:
+        datetime:
+    end:
+      required: true
+      selector:
+        datetime:
+    reason:
+      selector:
+        text:
+    destination:
+      selector:
+        text:
+    km:
+      selector:
+        number:
+          min: 0
+          max: 100000
+          unit_of_measurement: km
+          mode: box
+    note:
+      selector:
+        text:
+          multiline: true
+cancel:
+  fields:
+    booking_id:
+      required: true
+      selector:
+        text:
+finish:
+  fields:
+    vehicle:
+      required: true
+      example: voiture
+      selector:
+        text:

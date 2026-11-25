@@ -1,0 +1,102 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HOLM Booking Cars",
+        "description": "Veicoli, persone e notifiche si configurano poi dalla scheda HOLM Booking Cars (ingranaggio). Le persone di Home Assistant vengono importate automaticamente.",
+        "data": {
+          "vehicle_name": "Nome del primo veicolo"
+        },
+        "data_description": {
+          "vehicle_name": "Potrai aggiungerne altri, con foto e colore, dalla scheda."
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "HOLM Booking Cars è già installato."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "statut": {
+        "name": "Stato",
+        "state": {
+          "disponible": "Disponibile",
+          "bientot": "Prenotata a breve",
+          "reserve": "Prenotata"
+        }
+      },
+      "en_cours": {
+        "name": "Prenotata da"
+      },
+      "prochaine_reservation": {
+        "name": "Prossima prenotazione"
+      }
+    },
+    "binary_sensor": {
+      "disponible": {
+        "name": "Disponibile"
+      }
+    }
+  },
+  "services": {
+    "book": {
+      "name": "Prenota un veicolo",
+      "description": "Crea una prenotazione; rifiutata se si sovrappone a un'altra prenotazione del veicolo.",
+      "fields": {
+        "vehicle": {
+          "name": "Veicolo",
+          "description": "ID del veicolo (facoltativo se ce n'è uno solo)."
+        },
+        "person": {
+          "name": "Persona",
+          "description": "ID della persona."
+        },
+        "start": {
+          "name": "Inizio",
+          "description": "Data e ora di partenza."
+        },
+        "end": {
+          "name": "Fine",
+          "description": "Data e ora di rientro."
+        },
+        "reason": {
+          "name": "Motivo",
+          "description": "Perché il veicolo è prenotato."
+        },
+        "destination": {
+          "name": "Destinazione",
+          "description": "Dove vai."
+        },
+        "km": {
+          "name": "Km previsti",
+          "description": "Distanza stimata."
+        },
+        "note": {
+          "name": "Nota",
+          "description": "Commento libero."
+        }
+      }
+    },
+    "cancel": {
+      "name": "Annulla una prenotazione",
+      "description": "Elimina una prenotazione tramite il suo ID.",
+      "fields": {
+        "booking_id": {
+          "name": "Prenotazione",
+          "description": "ID della prenotazione."
+        }
+      }
+    },
+    "finish": {
+      "name": "Riconsegna il veicolo",
+      "description": "Termina ora la prenotazione in corso del veicolo (riconsegna anticipata).",
+      "fields": {
+        "vehicle": {
+          "name": "Veicolo",
+          "description": "ID del veicolo (facoltativo se ce n'è uno solo)."
+        }
+      }
+    }
+  }
+}

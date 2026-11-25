@@ -1,0 +1,102 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HOLM Booking Cars",
+        "description": "Os veículos, as pessoas e as notificações configuram-se depois no cartão HOLM Booking Cars (roda dentada). As pessoas do Home Assistant são importadas automaticamente.",
+        "data": {
+          "vehicle_name": "Nome do primeiro veículo"
+        },
+        "data_description": {
+          "vehicle_name": "Pode adicionar outros, com foto e cor, a partir do cartão."
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "O HOLM Booking Cars já está instalado."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "statut": {
+        "name": "Estado",
+        "state": {
+          "disponible": "Disponível",
+          "bientot": "Reservado em breve",
+          "reserve": "Reservado"
+        }
+      },
+      "en_cours": {
+        "name": "Reservado por"
+      },
+      "prochaine_reservation": {
+        "name": "Próxima reserva"
+      }
+    },
+    "binary_sensor": {
+      "disponible": {
+        "name": "Disponível"
+      }
+    }
+  },
+  "services": {
+    "book": {
+      "name": "Reservar um veículo",
+      "description": "Cria uma reserva; recusada se se sobrepuser a outra reserva do veículo.",
+      "fields": {
+        "vehicle": {
+          "name": "Veículo",
+          "description": "Identificador do veículo (opcional se houver só um)."
+        },
+        "person": {
+          "name": "Pessoa",
+          "description": "Identificador da pessoa."
+        },
+        "start": {
+          "name": "Início",
+          "description": "Data e hora de partida."
+        },
+        "end": {
+          "name": "Fim",
+          "description": "Data e hora de regresso."
+        },
+        "reason": {
+          "name": "Motivo",
+          "description": "Para que o veículo é reservado."
+        },
+        "destination": {
+          "name": "Destino",
+          "description": "Para onde vai."
+        },
+        "km": {
+          "name": "Quilómetros previstos",
+          "description": "Distância estimada."
+        },
+        "note": {
+          "name": "Nota",
+          "description": "Comentário livre."
+        }
+      }
+    },
+    "cancel": {
+      "name": "Cancelar uma reserva",
+      "description": "Elimina uma reserva pelo seu identificador.",
+      "fields": {
+        "booking_id": {
+          "name": "Reserva",
+          "description": "Identificador da reserva."
+        }
+      }
+    },
+    "finish": {
+      "name": "Devolver o veículo",
+      "description": "Termina agora a reserva em curso do veículo (devolução antecipada).",
+      "fields": {
+        "vehicle": {
+          "name": "Veículo",
+          "description": "Identificador do veículo (opcional se houver só um)."
+        }
+      }
+    }
+  }
+}

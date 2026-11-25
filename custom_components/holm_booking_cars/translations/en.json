@@ -1,0 +1,102 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HOLM Booking Cars",
+        "description": "Vehicles, people and notifications are then set up from the HOLM Booking Cars card (gear icon). Home Assistant people are imported automatically.",
+        "data": {
+          "vehicle_name": "First vehicle name"
+        },
+        "data_description": {
+          "vehicle_name": "You can add more, with a photo and colour, from the card."
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "HOLM Booking Cars is already set up."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "statut": {
+        "name": "Status",
+        "state": {
+          "disponible": "Available",
+          "bientot": "Booked soon",
+          "reserve": "Booked"
+        }
+      },
+      "en_cours": {
+        "name": "Booked by"
+      },
+      "prochaine_reservation": {
+        "name": "Next booking"
+      }
+    },
+    "binary_sensor": {
+      "disponible": {
+        "name": "Available"
+      }
+    }
+  },
+  "services": {
+    "book": {
+      "name": "Book a vehicle",
+      "description": "Creates a booking; refused if the slot overlaps another booking of the vehicle.",
+      "fields": {
+        "vehicle": {
+          "name": "Vehicle",
+          "description": "Vehicle ID (optional if there is only one)."
+        },
+        "person": {
+          "name": "Person",
+          "description": "Person ID."
+        },
+        "start": {
+          "name": "Start",
+          "description": "Departure date and time."
+        },
+        "end": {
+          "name": "End",
+          "description": "Return date and time."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "Why the vehicle is booked."
+        },
+        "destination": {
+          "name": "Destination",
+          "description": "Where you are going."
+        },
+        "km": {
+          "name": "Planned kilometres",
+          "description": "Estimated distance."
+        },
+        "note": {
+          "name": "Note",
+          "description": "Free comment."
+        }
+      }
+    },
+    "cancel": {
+      "name": "Cancel a booking",
+      "description": "Deletes a booking by its ID.",
+      "fields": {
+        "booking_id": {
+          "name": "Booking",
+          "description": "Booking ID."
+        }
+      }
+    },
+    "finish": {
+      "name": "Return the vehicle",
+      "description": "Ends the vehicle's current booking now (returned early).",
+      "fields": {
+        "vehicle": {
+          "name": "Vehicle",
+          "description": "Vehicle ID (optional if there is only one)."
+        }
+      }
+    }
+  }
+}
